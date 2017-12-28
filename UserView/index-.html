@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<meta charset="uft-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SCL</title>
+		<link rel="shortcut icon" href="Images/Hexagon.png">
+		<link rel='stylesheet' href='./styles/bootstrap_free.css' />
+		<link rel='stylesheet' href='./styles/font-awesome.css' />
+		<link rel='stylesheet' href='./styles/style.css' />
+		<link rel='stylesheet' href='scripts/jQueryRollPlugin/jRoll.css'></link>
+	</header>
+	<body>
+		<div id="msgDiv" align="right">
+			<div id="dialog" align="center" style="background-color:rgba(0, 100, 160, 0.8);">
+				<span id="closebtn" onclick="clearMsgBox()"><i class="fa fa-times fa-2x"></i></span>
+				<span id="msgHeader"></span><br />
+				<hr />
+				<span id="msgBody"></span><br />
+			</div>
+		</div>
+
+		<div>
+			<div class='container'>
+				<div class='row' style='position:relative; max-height:6px;'>
+					<div class='progress' id='progress' style='position:relative; top:5px; max-height:10px; background-color:#d0d0d0;'>
+						
+					</div>
+				</div>
+			</div>
+			<div class='container infUser' id=' . $account . '>
+				<div class='row'>
+					<div class='col-xs-12 col-sm-12 col-md-12'>
+						<form class='form-horizontal' role='form' method='post' action='insert.php'>
+							<div class='row'>
+								<div class='col-xs-3 col-sm-3 col-md-3' align='left'>
+									<b>Tempo restante: <br /><span id='temporestante'></span></b></p>
+								</div>
+								<div class='col-xs-3 col-sm-3 col-md-3' align='left'>
+									<strong>
+									<input type='text' name='search' id='search' class='form-control' value='' readonly style='max-height:40px;'></input>
+									<input style='display:none;' type='text' name='database' id='database' class='form-control' value=' . $returnbase . ' readonly></input>
+									</strong>
+								</div>
+								<div class='col-xs-3 col-sm-3 col-md-3 accountStatus' id='popup . $account . '>
+										<p><u id='user'></u></p>
+								</div>
+								<div class='col-xs-3 col-sm-3 col-md-3' id='btn-solicita'>
+								</div>
+							</div>
+							<br />
+							<div class='row ' style=''>
+								<div class='col-xs-4 col-sm-4 col-md-4'>
+									<b><u>Entrada </u><i class='fa fa-sign-in'></i></b><br/> Dia <strong id='dia-entrada'></strong> &agrave;s
+									<strong id='hora-entrada'></strong>:
+									<strong id='min-entrada'></strong>
+								</div>
+								<div class='col-xs-4 col-sm-4 col-md-4'>
+									<b><u>Saida </u><i class='fa fa-sign-out'></i></b><br /> Dia <strong id='dia-saida'></strong> &agrave;s 
+									<strong id='hora-saida'></strong>:
+									<strong id='min-saida'></strong>
+								</div>
+								<div class='col-xs-4 col-sm-4 col-md-4'>
+									<b>Logon Permitido: </b><span id='permitido'></span>
+								</div>
+							</div>
+							<div id='msg'>
+							</div>
+						</form> 
+					</div>
+				</div>
+			</div>
+			<div class='return-left' align='center'>
+				<strong>
+					<a href='home.php' class='hoverLight return'>
+						<i class='fa fa-chevron-left fa-4x'></i>
+					</a>
+				</strong>
+			</div>
+		</div>
+		<script src='./Scripts/jquery-2.1.4.min.js'></script>
+		<script src='./Scripts/bootstrap.min.js'></script>
+		<script src='./scripts/animated.js'></script>
+		<script src='scripts/jQueryRollPlugin/jRoll.min.js'></script>
+		<script>
+			var user;
+			setInterval(function() {
+				location.reload();
+			}, 60000);
+			$(document).ready(function(){
+				user = identifyReturnedCode("search");
+				document.getElementById("search").value = user;
+				collectData(user);
+				
+			});
+			function collectData(u){
+				
+			} 
+		</script>
+	</body>
+	
+</html>
+<!--
+progress = 	<div class='progress-bar progress-bar-striped " . $progressColor . " active' id='progressView' role='progressbar' aria-valuenow='" . $progress . "' aria-valuemin='0' aria-valuemax='" . $progressTotal . "' style='width:" . $progresspercent . "%'>
+		</div>
+
+temporestante =  . $tempoRestante . 
+
+user =  . $colaborador . 
+
+search = value=' . $account . '
+
+btn-solicita = if($permitido == $sim && $diaSaida != --){
+			<div style='margin-top:5px;'><button  . $solicitaOn .  type='submit' class='btn btn-info btn-sm'>Solicitar Tempo</button></div>
+		} else {
+			<div style='margin-top:5px;'><button disabled class='btn btn-info btn-sm'>Solicitar Tempo</button></div>
+		}
+
+dia-entrada =  . $viewDiaEnt . 
+
+hora-entrada =  . $viewHoraEnt . 
+
+min-entrada =  . $viewMinEnt . 
+
+dia-saida =  . $viewDiaSaida . 
+
+hora-saida = . $viewHoraSaida . 
+
+min-saida =  . $viewMinSaida . 
+
+permitido =  . $permitido . 
+
+msg = <a class='msgAlert' href='http://SCL.call.br/messages/index.php?act= . $msgUser . ' target='_blank'>
+		<div class='messages' align='center'>
+			<span class='fontPlay'>
+				Voc&ecirc; possui <b> . $countMessages . </b> nova(s) mensagen(s)!<br />
+			</span>
+			<div class='blink' style='padding-top:-10;'>
+				<i class='fa fa-envelope fa-2x'></i>
+			</div>
+		</div>
+	</a>
+-->
+
+
